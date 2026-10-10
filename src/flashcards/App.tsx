@@ -1,0 +1,1 @@
+// skeleton\nexport default function Skeleton() { return null; }\n
