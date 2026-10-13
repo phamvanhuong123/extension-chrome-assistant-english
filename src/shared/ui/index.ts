@@ -1,1 +1,3 @@
-// skeleton\nexport {}\n
+import './tokens.css'
+
+export {}
