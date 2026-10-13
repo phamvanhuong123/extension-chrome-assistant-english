@@ -9,7 +9,10 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-_(Add new entries here before each release. Group under Added / Changed / Fixed / Removed.)_
+### Added
+
+- Feature-based architecture skeleton in `src/` (translate, vocabulary, flashcards, stats, summarize, settings)
+- Configured TS path alias `@/` for `src/` in `tsconfig.app.json`
 
 ---
 
