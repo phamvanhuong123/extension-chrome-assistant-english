@@ -1,22 +1,5 @@
 import { describe, it, expect } from 'vitest'
-
-interface Dictionary {
-  [key: string]: string
-}
-
-function createI18n(dicts: { vi: Dictionary; en: Dictionary }, initialLang: 'vi' | 'en' = 'vi') {
-  let currentLang = initialLang
-
-  return {
-    setLanguage: (lang: 'vi' | 'en') => {
-      currentLang = lang
-    },
-    t: (key: string, params: Record<string, string | number> = {}): string => {
-      const template = dicts[currentLang]?.[key] ?? dicts.en?.[key] ?? key
-      return template.replace(/\{(\w+)\}/g, (_, p) => String(params[p] ?? `{${p}}`))
-    }
-  }
-}
+import { createI18n } from './createI18n'
 
 describe('createI18n (shared/i18n)', () => {
   const dicts = {
@@ -51,5 +34,20 @@ describe('createI18n (shared/i18n)', () => {
     expect(i18n.t('common.save')).toBe('Lưu')
     i18n.setLanguage('en')
     expect(i18n.t('common.save')).toBe('Save')
+  })
+
+  it('notifies subscribers when language changes', () => {
+    const i18n = createI18n(dicts, 'vi')
+    let observedLang = ''
+    const unsubscribe = i18n.subscribe((lang) => {
+      observedLang = lang
+    })
+
+    i18n.setLanguage('en')
+    expect(observedLang).toBe('en')
+
+    unsubscribe()
+    i18n.setLanguage('vi')
+    expect(observedLang).toBe('en') // Should not change after unsubscribe
   })
 })

@@ -3,10 +3,9 @@
   flex-direction: column;
   width: 100%;
   min-height: 240px;
-  padding: var(--space-4);
-  gap: var(--space-3);
   background-color: var(--color-background);
   color: var(--color-text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .popup-header {
@@ -14,20 +13,71 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--color-border);
-  padding-bottom: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .popup-title {
   font: var(--text-title);
+  font-weight: 600;
   color: var(--color-text-primary);
   margin: 0;
+  letter-spacing: -0.01em;
+  transition: color 0.25s ease;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+.theme-toggle-btn:hover svg {
+  transform: rotate(15deg);
 }
 
 .popup-body {
   display: flex;
   flex-direction: column;
+  padding: var(--space-4);
   gap: var(--space-3);
   flex: 1;
+}
+
+.hint-card {
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.hint-text {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font: var(--text-body);
+  line-height: 1.5;
+  transition: color 0.25s ease;
 }
 
 .primary-button {

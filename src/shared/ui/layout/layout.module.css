@@ -1,0 +1,75 @@
+/* Popup Layout */
+.popupContainer {
+  width: 360px;
+  max-height: 560px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.popupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  flex-shrink: 0;
+}
+
+.popupTitle {
+  margin: 0;
+  font: var(--text-title);
+  color: var(--color-text-primary);
+}
+
+.popupBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+}
+
+.popupFooter {
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  flex-shrink: 0;
+}
+
+/* Full-Tab Page Layout (Options, Flashcards) */
+.pageContainer {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  box-sizing: border-box;
+}
+
+.pageInner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+}
+
+.pageHeader {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pageTitle {
+  margin: 0;
+  font: var(--text-display);
+  color: var(--color-text-primary);
+}
+
+.pageDescription {
+  margin: var(--space-2) 0 0;
+  font: var(--text-secondary);
+  color: var(--color-text-secondary);
+}
