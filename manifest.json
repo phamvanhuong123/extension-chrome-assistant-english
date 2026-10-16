@@ -7,5 +7,6 @@
     "default_popup": "index.html",
     "default_title": "Open Popup"
   },
+  "options_page": "src/options/index.html",
   "permissions": []
 }

@@ -1,0 +1,145 @@
+.tooltipWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font: var(--text-caption);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 14px;
+  padding: 5px 9px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-elevated);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-2);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
+}
+
+/* Positioning */
+.positionBottom {
+  top: calc(100% + 7px);
+}
+
+.positionTop {
+  bottom: calc(100% + 7px);
+}
+
+/* Alignment when hidden */
+.positionBottom.alignCenter {
+  left: 50%;
+  transform: translateX(-50%) translateY(-3px) scale(0.96);
+}
+
+.positionBottom.alignStart {
+  left: 0;
+  transform: translateY(-3px) scale(0.96);
+}
+
+.positionBottom.alignEnd {
+  right: 0;
+  transform: translateY(-3px) scale(0.96);
+}
+
+.positionTop.alignCenter {
+  left: 50%;
+  transform: translateX(-50%) translateY(3px) scale(0.96);
+}
+
+.positionTop.alignStart {
+  left: 0;
+  transform: translateY(3px) scale(0.96);
+}
+
+.positionTop.alignEnd {
+  right: 0;
+  transform: translateY(3px) scale(0.96);
+}
+
+/* Visible state on hover / keyboard focus-visible */
+.tooltipWrapper:hover .tooltip,
+.tooltipWrapper:has(:focus-visible) .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 120ms;
+}
+
+.tooltipWrapper:hover .positionBottom.alignCenter,
+.tooltipWrapper:has(:focus-visible) .positionBottom.alignCenter,
+.tooltipWrapper:hover .positionTop.alignCenter,
+.tooltipWrapper:has(:focus-visible) .positionTop.alignCenter {
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.tooltipWrapper:hover .positionBottom.alignStart,
+.tooltipWrapper:has(:focus-visible) .positionBottom.alignStart,
+.tooltipWrapper:hover .positionTop.alignStart,
+.tooltipWrapper:has(:focus-visible) .positionTop.alignStart,
+.tooltipWrapper:hover .positionBottom.alignEnd,
+.tooltipWrapper:has(:focus-visible) .positionBottom.alignEnd,
+.tooltipWrapper:hover .positionTop.alignEnd,
+.tooltipWrapper:has(:focus-visible) .positionTop.alignEnd {
+  transform: translateY(0) scale(1);
+}
+
+/* Hide immediately when clicking */
+.tooltipWrapper:active .tooltip {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
+}
+
+/* Tooltip Arrow (Caret) */
+.arrow {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  transform: rotate(45deg);
+}
+
+.positionBottom .arrow {
+  top: -4px;
+  border-bottom: none;
+  border-right: none;
+}
+
+.positionTop .arrow {
+  bottom: -4px;
+  border-top: none;
+  border-left: none;
+}
+
+.alignCenter .arrow {
+  left: calc(50% - 3px);
+}
+
+.alignStart .arrow {
+  left: 12px;
+}
+
+.alignEnd .arrow {
+  right: 12px;
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+}

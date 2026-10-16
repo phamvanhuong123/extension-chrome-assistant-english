@@ -1,15 +1,17 @@
 /* Popup Layout */
 .popupContainer {
   width: 360px;
+  min-height: 280px;
   max-height: 560px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
   background-color: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   box-sizing: border-box;
   overflow: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .popupHeader {
@@ -20,6 +22,7 @@
   border-bottom: 1px solid var(--color-border);
   background-color: var(--color-surface);
   flex-shrink: 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .popupTitle {
@@ -28,10 +31,79 @@
   color: var(--color-text-primary);
 }
 
+.popupNavBar {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.popupNavList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-1);
+}
+
+.popupNavListItem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popupNavItem {
+  width: 100%;
+  max-width: 48px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.popupNavItem:hover {
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+
+.popupNavItemActive {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+}
+
+.popupNavItemActive:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-text-on-primary);
+}
+
+.pinnedBanner {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface-sunken);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
 .popupBody {
   flex: 1;
   overflow-y: auto;
   padding: var(--space-4);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .popupFooter {
@@ -39,9 +111,19 @@
   border-top: 1px solid var(--color-border);
   background-color: var(--color-surface);
   flex-shrink: 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
-/* Full-Tab Page Layout (Options, Flashcards) */
+.toastHost {
+  position: absolute;
+  bottom: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Full-Tab Page Layout (Generic) */
 .pageContainer {
   min-height: 100vh;
   background-color: var(--color-background);
@@ -72,4 +154,132 @@
   margin: var(--space-2) 0 0;
   font: var(--text-secondary);
   color: var(--color-text-secondary);
+}
+
+/* Options Master-Detail Layout (Trái - Phải) */
+.optionsContainer {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  box-sizing: border-box;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.optionsInner {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+}
+
+.optionsHeader {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color 0.25s ease;
+}
+
+.optionsHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.optionsTitle {
+  margin: 0;
+  font: var(--text-display);
+  color: var(--color-text-primary);
+}
+
+.optionsDescription {
+  margin: var(--space-2) 0 0;
+  font: var(--text-secondary);
+  color: var(--color-text-secondary);
+}
+
+.optionsMasterDetail {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+}
+
+.optionsSidebar {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.optionsNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.optionsNavItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font: var(--text-body);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.optionsNavItem:hover {
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+
+.optionsNavItemActive {
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  border-left: 3px solid var(--color-primary);
+}
+
+.optionsNavIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.optionsNavLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.optionsContentPane {
+  flex: 1;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  min-height: 400px;
+  box-sizing: border-box;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+@media (max-width: 640px) {
+  .optionsMasterDetail {
+    flex-direction: column;
+  }
+  .optionsSidebar {
+    width: 100%;
+  }
+  .optionsNavList {
+    flex-direction: row;
+    overflow-x: auto;
+  }
 }
