@@ -12,4 +12,3 @@ export const DEFAULT_SETTINGS: Settings = {
 
 export const SETTINGS_STORAGE_KEY = 'settings'
 export const API_KEY_STORAGE_KEY = 'secret:aiApiKey'
-
