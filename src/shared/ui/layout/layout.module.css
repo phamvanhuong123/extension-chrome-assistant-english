@@ -134,8 +134,14 @@
   bottom: var(--space-4);
   left: var(--space-4);
   right: var(--space-4);
+  display: flex;
+  justify-content: center;
   pointer-events: none;
   z-index: 100;
+}
+
+.toastHost > * {
+  pointer-events: auto;
 }
 
 /* Full-Tab Page Layout (Generic) */
