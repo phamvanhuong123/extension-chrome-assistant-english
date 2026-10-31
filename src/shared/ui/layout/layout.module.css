@@ -11,7 +11,9 @@
   font-family: var(--font-sans);
   box-sizing: border-box;
   overflow: hidden;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .popupHeader {
@@ -22,7 +24,9 @@
   border-bottom: 1px solid var(--color-border);
   background-color: var(--color-surface);
   flex-shrink: 0;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .popupTitle {
@@ -38,7 +42,9 @@
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   flex-shrink: 0;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .popupNavList {
@@ -72,7 +78,10 @@
   border: 1px solid transparent;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
   flex-shrink: 0;
 }
 
@@ -96,14 +105,18 @@
   background-color: var(--color-surface-sunken);
   border-bottom: 1px solid var(--color-border);
   flex-shrink: 0;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .popupBody {
   flex: 1;
   overflow-y: auto;
   padding: var(--space-4);
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .popupFooter {
@@ -111,7 +124,9 @@
   border-top: 1px solid var(--color-border);
   background-color: var(--color-surface);
   flex-shrink: 0;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .toastHost {
@@ -163,7 +178,9 @@
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   box-sizing: border-box;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .optionsInner {
@@ -230,7 +247,9 @@
   font: var(--text-body);
   text-align: left;
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
   box-sizing: border-box;
 }
 
@@ -268,7 +287,9 @@
   padding: var(--space-6);
   min-height: 400px;
   box-sizing: border-box;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 @media (max-width: 640px) {

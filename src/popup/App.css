@@ -5,7 +5,9 @@
   min-height: 240px;
   background-color: var(--color-background);
   color: var(--color-text-primary);
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .popup-header {
@@ -15,7 +17,9 @@
   border-bottom: 1px solid var(--color-border);
   padding: var(--space-3) var(--space-4);
   background-color: var(--color-surface);
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .popup-title {
@@ -39,7 +43,10 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .theme-toggle-btn svg {
@@ -69,7 +76,9 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-3) var(--space-4);
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .hint-text {

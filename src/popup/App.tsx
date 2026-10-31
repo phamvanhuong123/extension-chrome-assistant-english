@@ -1,15 +1,5 @@
 import { useState, type ReactNode } from 'react'
-import {
-  Sun,
-  Moon,
-  Settings,
-  Languages,
-  GraduationCap,
-  Sparkles,
-  Database,
-  ShieldAlert,
-  BookOpen
-} from 'lucide-react'
+import { Sun, Moon, Settings, Languages, GraduationCap, Sparkles, Database, ShieldAlert, BookOpen } from 'lucide-react'
 import { PopupLayout, Tooltip } from '@/shared/ui'
 import layoutStyles from '@/shared/ui/layout/layout.module.css'
 import { useTheme } from '@/shared/ui/theme'
