@@ -1,14 +1,5 @@
 import { describe, it, expect } from 'vitest'
-
-function normalizeText(text: string): string {
-  return text.trim().toLowerCase().replace(/\s+/g, ' ')
-}
-
-function countWords(text: string): number {
-  const normalized = text.trim()
-  if (!normalized) return 0
-  return normalized.split(/\s+/).length
-}
+import { normalizeText, countWords } from './text'
 
 describe('Text utils (shared/utils/text)', () => {
   it('normalizes text by trimming, lowercasing, and collapsing internal whitespace', () => {

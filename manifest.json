@@ -8,5 +8,6 @@
     "default_title": "Open Popup"
   },
   "options_page": "src/options/index.html",
-  "permissions": []
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.mymemory.translated.net/*"]
 }

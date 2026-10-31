@@ -1,1 +1,1 @@
-// skeleton\nexport {}\n
+export { normalizeText, countWords } from './text'
