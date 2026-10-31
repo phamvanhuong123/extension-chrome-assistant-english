@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { createChromeMock } from '@/test/chrome-mock'
-import { createSettingsFixture } from '@/test/factories'
+import { DEFAULT_SETTINGS } from '../constants'
+import { getSettings, saveSettings, getApiKey, setApiKey, hasApiKey } from './settings.repo'
 
 describe('settings.repo (FR-09, FR-11)', () => {
   const chromeMock = createChromeMock()
@@ -12,24 +13,51 @@ describe('settings.repo (FR-09, FR-11)', () => {
     vi.clearAllMocks()
   })
 
-  it('persists general settings to chrome.storage.sync', async () => {
-    const settings = createSettingsFixture({
-      uiLanguage: 'vi',
-      dailyGoal: 15,
-      tooltipTrigger: 'auto'
+  it('returns DEFAULT_SETTINGS when storage is empty', async () => {
+    const settings = await getSettings()
+    expect(settings).toEqual(DEFAULT_SETTINGS)
+  })
+
+  it('merges stored partial settings with DEFAULT_SETTINGS', async () => {
+    await chromeMock.storage.sync.set({
+      settings: { dailyGoal: 25, theme: 'dark' }
     })
 
-    await chromeMock.storage.sync.set({ settings })
+    const settings = await getSettings()
+    expect(settings).toEqual({
+      ...DEFAULT_SETTINGS,
+      dailyGoal: 25,
+      theme: 'dark'
+    })
+  })
+
+  it('persists general settings to chrome.storage.sync', async () => {
+    const partial = {
+      uiLanguage: 'en' as const,
+      dailyGoal: 15,
+      tooltipTrigger: 'auto' as const
+    }
+
+    const updated = await saveSettings(partial)
+    expect(updated.dailyGoal).toBe(15)
+    expect(updated.uiLanguage).toBe('en')
+
     const stored = (await chromeMock.storage.sync.get('settings'))['settings']
-    expect(stored).toEqual(settings)
+    expect(stored).toEqual(expect.objectContaining(partial))
   })
 
   it('stores AI API key in chrome.storage.local and ensures it is never exported (FR-11, NFR-03)', async () => {
     const secretKey = 'sk-ai-secret-key-12345'
-    await chromeMock.storage.local.set({ 'secret:aiApiKey': secretKey })
+    const success = await setApiKey(secretKey)
+    expect(success).toBe(true)
 
-    const localData = await chromeMock.storage.local.get('secret:aiApiKey')
-    expect(localData['secret:aiApiKey']).toBe(secretKey)
+    const key = await getApiKey()
+    expect(key).toBe(secretKey)
+    expect(await hasApiKey()).toBe(true)
+
+    // Ensure it was NOT saved in sync
+    const syncData = await chromeMock.storage.sync.get('secret:aiApiKey')
+    expect(syncData['secret:aiApiKey']).toBeUndefined()
 
     // Export function simulation
     function buildExportData(allData: Record<string, unknown>) {
@@ -48,5 +76,15 @@ describe('settings.repo (FR-09, FR-11)', () => {
     })
 
     expect(exported).not.toHaveProperty('secret:aiApiKey')
+  })
+
+  it('clears API key when setting empty string', async () => {
+    await setApiKey('initial-key')
+    expect(await hasApiKey()).toBe(true)
+
+    const success = await setApiKey('   ')
+    expect(success).toBe(false)
+    expect(await getApiKey()).toBeUndefined()
+    expect(await hasApiKey()).toBe(false)
   })
 })

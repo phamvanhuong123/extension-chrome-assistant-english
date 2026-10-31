@@ -1,1 +1,1 @@
-// skeleton\nexport {}\n
+export { localStore, syncStore, sessionStore } from './typed-storage'
