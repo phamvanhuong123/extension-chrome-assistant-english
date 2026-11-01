@@ -68,7 +68,8 @@ export function useTextSelection() {
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>
 
-    const onMouseUp = () => {
+    const onMouseUp = (e: MouseEvent) => {
+      if (e.button !== 0) return
       clearTimeout(timer)
       timer = setTimeout(handleSelectionChange, DEBOUNCE_MS)
     }

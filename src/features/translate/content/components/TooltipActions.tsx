@@ -46,4 +46,3 @@ export function TooltipActions({ saveState, onSave }: TooltipActionsProps) {
     </div>
   )
 }
-

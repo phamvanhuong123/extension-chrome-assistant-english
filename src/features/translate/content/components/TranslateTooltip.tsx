@@ -35,7 +35,8 @@ export function TranslateTooltip() {
     }
 
     const onMouseDown = (e: MouseEvent) => {
-      if (tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
+      const path = typeof e.composedPath === 'function' ? e.composedPath() : [e.target as Node]
+      if (tooltipRef.current && !path.includes(tooltipRef.current)) {
         clear()
       }
     }

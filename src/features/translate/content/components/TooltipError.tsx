@@ -30,4 +30,3 @@ export function TooltipError({ code, retryable, onRetry }: TooltipErrorProps) {
     </div>
   )
 }
-

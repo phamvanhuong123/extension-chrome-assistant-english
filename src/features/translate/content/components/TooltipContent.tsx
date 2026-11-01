@@ -36,4 +36,3 @@ export function TooltipContent({ word, translation, phonetic, partOfSpeech }: To
     </div>
   )
 }
-

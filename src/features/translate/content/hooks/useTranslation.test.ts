@@ -90,4 +90,3 @@ describe('useTranslation', () => {
     expect(translateApi.translateWord).toHaveBeenCalledTimes(2)
   })
 })
-
