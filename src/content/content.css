@@ -1,0 +1,14 @@
+#era-app {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+}
+
+#era-app *,
+#era-app *::before,
+#era-app *::after {
+  box-sizing: inherit;
+}
+

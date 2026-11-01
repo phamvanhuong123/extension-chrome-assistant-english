@@ -3,11 +3,22 @@
   "name": "My React Vite Extension",
   "version": "1.0.0",
   "description": "Chrome Extension xây dựng bằng React và Vite",
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/index.tsx"],
+      "run_at": "document_idle"
+    }
+  ],
   "action": {
     "default_popup": "index.html",
     "default_title": "Open Popup"
   },
   "options_page": "src/options/index.html",
-  "permissions": ["storage"],
+  "permissions": ["storage", "activeTab"],
   "host_permissions": ["https://api.mymemory.translated.net/*"]
 }
