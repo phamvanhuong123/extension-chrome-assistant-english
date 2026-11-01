@@ -33,4 +33,3 @@ describe('translate.api', () => {
     expect(res).toEqual(mockResponse)
   })
 })
-

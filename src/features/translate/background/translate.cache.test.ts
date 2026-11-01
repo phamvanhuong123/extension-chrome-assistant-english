@@ -69,4 +69,3 @@ describe('translate.cache', () => {
     expect(remaining['other:key']).toEqual({ value: 123 })
   })
 })
-

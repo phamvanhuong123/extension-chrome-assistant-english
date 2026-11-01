@@ -7,4 +7,3 @@ export function countWords(text: string): number {
   if (!normalized) return 0
   return normalized.split(/\s+/).length
 }
-

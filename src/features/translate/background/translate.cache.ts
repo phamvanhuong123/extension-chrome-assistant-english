@@ -49,4 +49,3 @@ export async function clearCache(): Promise<void> {
     await sessionStore.remove(cacheKeys)
   }
 }
-
